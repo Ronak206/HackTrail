@@ -1,0 +1,37 @@
+HACKTRAIL/
+│
+├── agents/                      # 🧠 All AI agents (each in its own file)
+│   ├── jd_summarizer.py         # JD Summarizer Agent
+│   ├── cv_parser.py             # CV Parser Agent
+│   ├── matcher.py               # Matcher Agent
+│   ├── shortlister.py           # Shortlister Agent
+│   ├── scheduler.py             # Scheduler Agent
+│   ├── memory.py                # Memory Agent (SQLite operations)
+│   ├── feedback_agent.py        # (Optional) Feedback Agent
+│   ├── learning_agent.py        # (Optional) Learning Agent (ML)
+│   └── dashboard_agent.py       # (Optional) Dashboard Agent (Streamlit/Flask)
+│
+├── data/                        # 📄 Input files
+│   ├── sample_jds/              # Sample Job Descriptions
+│   ├── sample_cvs/              # Sample Resumes
+│   └── db.sqlite3               # SQLite DB (created by memory agent)
+│
+├── utils/                       # 🔧 Utility functions (PDF reader, email sender, etc.)
+│   ├── pdf_reader.py
+│   ├── email_sender.py
+│   └── preprocessing.py
+│
+├── models/                      # 🤖 ML models (used by learning agent)
+│   └── match_predictor.pkl
+│
+├── static/                      # 🌐 Assets for dashboard (if you build a frontend)
+│   └── charts/
+│
+├── templates/                   # 🧩 HTML templates for dashboard (if Flask is used)
+│   └── dashboard.html
+│
+├── main.py                      # 🚀 Main controller to run the app
+├── config.py                    # ⚙️ Configurations (email, DB paths, thresholds)
+├── requirements.txt             # 📦 Python dependencies
+├── README.md                    # 📘 Project overview & setup instructions
+└── demo_video_link.txt          # 📹 (Optional) Link to your demo video
