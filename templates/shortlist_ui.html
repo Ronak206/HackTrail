@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Job Shortlister</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="container panel">
+    <h2>Smart Job Shortlister</h2>
+    <form action="/" method="post" enctype="multipart/form-data">
+      <label for="job_description">Job Description:</label>
+      <textarea id="job_description" name="job_description" rows="6" required></textarea>
+    
+      <label for="cv_files">Upload CVs (PDF only):</label>
+      <input id="cv_files" name="cv_files" type="file" accept=".pdf" multiple required>
+    
+      <label for="candidate_count">Number of Candidates:</label>
+      <input id="candidate_count" name="candidate_count" type="number" min="1" disabled required>
+    
+      <input type="submit" value="Shortlist Now">
+    
+      <script>
+        const fileInput = document.getElementById("cv_files");
+        const countInput = document.getElementById("candidate_count");
+    
+        fileInput.addEventListener("change", function () {
+          const fileCount = fileInput.files.length;
+          countInput.max = fileCount;
+          countInput.min = 1;
+          countInput.disabled = fileCount === 0;
+    
+          // Reset invalid state
+          countInput.setCustomValidity("");
+    
+          countInput.addEventListener("input", function () {
+            if (parseInt(countInput.value) > fileCount) {
+              countInput.setCustomValidity("You cannot shortlist more than uploaded CVs.");
+            } else {
+              countInput.setCustomValidity(""); // Valid
+            }
+          });
+        });
+      </script>
+    </form>
+  </div>
+
+  {% if results %}
+    <div class="container panel">
+      <h2>Shortlisted Candidates</h2>
+      <table>
+        <thead>
+          <tr><th>PDF #</th><th>Name</th><th>Email</th><th>Phone</th></tr>
+        </thead>
+        <tbody>
+          {% for r in results %}
+            <tr>
+              <td>{{ r.pdf_number }}</td>
+              <td>{{ r.name }}</td>
+              <td>{{ r.email }}</td>
+              <td>{{ r.phone }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% endif %}
+</body>
+</html>

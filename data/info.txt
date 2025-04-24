@@ -1,1 +1,7 @@
-It contains CVs1 folder and job_description.csv
+Contains sample_cvs , sample_jds and dataset folder 
+
+sample_cvs - we use this hardcoded value for testing purpose.
+sample_jds - also for testing purpose.
+datadet - provided by hackthon.
+
+without this folder project will run fine..
