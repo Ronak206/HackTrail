@@ -48,7 +48,7 @@ HACKTRAIL/
 ├── uploaded_cvs                 # 📦 Store CVs upload by user (per run new file created)
 ├── README.md                    # 📘 Project overview & setup instructions
 ├── Structure.tx                 # 👩🏻‍💻Project structure
-└── demo_video_link.txt          # 📹 Link to your demo video
+└── demo_video_link.txt          # 📹 Link to demo video
 ```
 
 
